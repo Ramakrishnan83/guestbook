@@ -10,7 +10,7 @@
 
 --- 
 
-**POST /api/guests**
+**POST https://ms-guestbook.herokuapp.com/api/guests**
 
 RequestBody
 
@@ -23,7 +23,7 @@ RequestBody
 
 
 ---
-**GET /api/guests**
+**GET https://ms-guestbook.herokuapp.com/api/guests**
 
 Response 
 
