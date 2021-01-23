@@ -10,6 +10,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -57,6 +58,18 @@ public class GuestbookControllerTest {
         		get("/api/guests"))
         .andExpect(status().isOk())
         .andExpect(jsonPath("$.length()").value(0));
+    }
+    
+    @Test
+    public void test_getGuestEntries_multipleEntries() throws Exception {
+    	List<GuestEntry> entries = new ArrayList<>();
+    	entries.add(new GuestEntry("Test", "TestEntry for Guest"));
+    	entries.add(new GuestEntry("Superstar", "No Comment"));
+    	when(bookService.getGuestEntries()).thenReturn(entries);
+    	mvc.perform(
+        		get("/api/guests"))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$.length()").value(2));
     }
     
 }
