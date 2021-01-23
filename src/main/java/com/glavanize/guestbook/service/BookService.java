@@ -8,20 +8,17 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 @Service
 @Scope("singleton")
-public class BookService {
-    List<GuestEntry> guestEntries;
-
-    public BookService() {
-        this.guestEntries = new ArrayList<>();
-    }
+public class BookService {    
 
     public void saveGuestEntry(GuestEntry guestEntry) {
-        guestEntries.add(guestEntry);
+        StaticData.addEntry(guestEntry);
     }
 
-    public List<GuestEntry> getGuestEntries() {
-        return guestEntries;
+    public List<GuestEntry> getGuestEntries() {    	
+        return StaticData.getEntries();
     }
 }

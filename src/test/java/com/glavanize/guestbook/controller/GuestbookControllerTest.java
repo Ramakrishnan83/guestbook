@@ -69,7 +69,8 @@ public class GuestbookControllerTest {
     	mvc.perform(
         		get("/api/guests"))
         .andExpect(status().isOk())
-        .andExpect(jsonPath("$.length()").value(2));
+        .andExpect(jsonPath("$.length()").value(2))
+        .andExpect(jsonPath("$.[0].guestName").value("Test"));
     }
     
 }

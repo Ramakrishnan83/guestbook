@@ -4,8 +4,10 @@ import com.glavanize.guestbook.service.BookService;
 
 import java.util.List;
 
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,11 +23,11 @@ public class GuestbookController {
 	}
 
 	@PostMapping(value = "/guests")
-	public void saveGuestEntry(GuestEntry entry) {
+	public void saveGuestEntry(@RequestBody GuestEntry entry) {
 		bookService.saveGuestEntry(entry);
 	}
 	
-	@GetMapping(value = "/guests")
+	@GetMapping(value = "/guests", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<GuestEntry> getGuestEntries() {
 		return bookService.getGuestEntries();
 	}
