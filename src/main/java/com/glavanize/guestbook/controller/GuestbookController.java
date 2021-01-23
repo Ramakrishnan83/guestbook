@@ -1,6 +1,10 @@
 package com.glavanize.guestbook.controller;
 
 import com.glavanize.guestbook.service.BookService;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +23,11 @@ public class GuestbookController {
 	@PostMapping(value = "/guests")
 	public void saveGuestEntry(GuestEntry entry) {
 		bookService.saveGuestEntry(entry);
+	}
+	
+	@GetMapping(value = "/guests")
+	public List<GuestEntry> getGuestEntries() {
+		return bookService.getGuestEntries();
 	}
 
 }

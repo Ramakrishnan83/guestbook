@@ -28,9 +28,7 @@ RequestBody
 Response 
 
 ```json
-{
-    "data":{
-        "guestBook" : [
+    [
             {
                 "guestName":"string",
                 "comment" : "string"
@@ -39,7 +37,6 @@ Response
                 "guestName":"string",
                 "comment" : "string"
             }
-        ]
-    }
-}
+     ]
+
 ```
